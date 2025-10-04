@@ -15,7 +15,7 @@ import org.opensearch.core.xcontent.NamedXContentRegistry;
 import org.opensearch.core.xcontent.XContentParser;
 import org.opensearch.ml.common.model.MLModelState;
 
-import static org.opensearch.knn.common.KNNConstants.MODEL_INDEX_NAME;
+//import static org.opensearch.knn.common.KNNConstants.MODEL_INDEX_NAME;
 import static org.opensearch.neuralsearch.common.VectorUtil.vectorAsListToArray;
 
 import java.io.IOException;
@@ -1937,8 +1937,8 @@ public abstract class BaseNeuralSearchIT extends OpenSearchSecureRestTestCase {
     private boolean shouldDeleteIndex(String indexName) {
         return indexName != null
             && !OPENDISTRO_SECURITY.equals(indexName)
-            && IMMUTABLE_INDEX_PREFIXES.stream().noneMatch(indexName::startsWith)
-            && !MODEL_INDEX_NAME.equals(indexName);
+            && IMMUTABLE_INDEX_PREFIXES.stream().noneMatch(indexName::startsWith);
+        // && !MODEL_INDEX_NAME.equals(indexName);
     }
 
     /**
