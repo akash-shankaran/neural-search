@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -29,7 +30,7 @@ public class ValidateDependentPluginInstallationIT extends OpenSearchSecureRestT
 
     private static final String KNN_INDEX_NAME = "neuralsearchknnindexforvalidation";
     private static final String KNN_VECTOR_FIELD_NAME = "vectorField";
-    private static final Set<String> DEPENDENT_PLUGINS = Set.of("opensearch-ml", "opensearch-knn");
+    private static Set<String> DEPENDENT_PLUGINS = new HashSet<>(Collections.singleton("opensearch-ml"));
     private static final String GET_PLUGINS_URL = "_cat/plugins";
     private static final String ML_PLUGIN_STATS_URL = "_plugins/_ml/stats";
     private static final String KNN_DOCUMENT_URL = KNN_INDEX_NAME + "/_doc/1?refresh";
@@ -46,8 +47,9 @@ public class ValidateDependentPluginInstallationIT extends OpenSearchSecureRestT
         }
         String jarFileName = jarPath.substring(jarPath.lastIndexOf('/') + 1);
         if (jarFileName.contains("jvector")) {
-            DEPENDENT_PLUGINS.remove("opensearch-knn");
             DEPENDENT_PLUGINS.add("opensearch-jvector");
+        } else {
+            DEPENDENT_PLUGINS.add("opensearch-knn");
         }
 
         Assert.assertTrue(installedPlugins.containsAll(DEPENDENT_PLUGINS));
