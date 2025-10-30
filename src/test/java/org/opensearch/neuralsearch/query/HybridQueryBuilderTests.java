@@ -117,7 +117,7 @@ public class HybridQueryBuilderTests extends OpenSearchQueryTestCase {
         String jarFileName = jarPath.substring(jarPath.lastIndexOf('/') + 1);
         if (jarFileName.contains("jvector")) knnEngine = KNNEngine.valueOf("JVECTOR");
         else knnEngine = KNNEngine.valueOf("FAISS");
-        
+
     }
 
     @Override
