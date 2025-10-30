@@ -19,7 +19,7 @@ public class SemanticInfoFieldConstants {
     public static final String KNN_VECTOR_DATA_TYPE_FIELD_NAME = "data_type";
     public static final String KNN_VECTOR_METHOD_FIELD_NAME = "method";
     public static final String KNN_VECTOR_METHOD_NAME_FIELD_NAME = "name";
-    public static final String KNN_VECTOR_METHOD_DEFAULT_NAME = "hnsw";
+    public static final String KNN_VECTOR_METHOD_DEFAULT_NAME = "disk_ann";
     public static final String KNN_VECTOR_METHOD_SPACE_TYPE_FIELD_NAME = "space_type";
 
     public static final String CHUNKS_FIELD_NAME = "chunks";
